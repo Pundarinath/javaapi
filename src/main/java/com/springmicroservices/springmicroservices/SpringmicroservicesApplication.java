@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 @SpringBootApplication
 public class SpringmicroservicesApplication {
 
@@ -27,6 +30,12 @@ public class SpringmicroservicesApplication {
 			x[1] = "Good Afternoon!";
 			x[2] = "Good Night!";
 			return x;
+		}
+
+		@GetMapping("/api/getSamples")
+		public String getSamples() {
+			String[] x = {"Good Morning!", "Good Afternoon!", "Good Night!"};
+			return Arrays.stream(x).collect(Collectors.joining("; ")) + "; ";
 		}
 	}
 }
